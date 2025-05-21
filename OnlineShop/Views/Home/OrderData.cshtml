@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "OrderData";
+}
+
+@model IEnumerable<ReportDto>
+<div class="container">
+    <h2>Raport EF</h2>
+    <table class="table table-bordered table-hover">
+        <tr><th>Płatność</th><th>Liczba zamówień</th><th>Suma brutto</th></tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.PaymentMethod</td>
+                <td>@item.OrderCount</td>
+                <td>@item.TotalGross</td>
+            </tr>
+        }
+    </table>
+</div>
+
