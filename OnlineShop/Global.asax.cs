@@ -12,7 +12,6 @@ namespace OnlineShop
     {
         protected void Application_Start()
         {
-            throw new NotImplementedException();
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);

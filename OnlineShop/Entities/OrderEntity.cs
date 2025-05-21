@@ -1,13 +1,15 @@
 ﻿using OnlineShopModels.Enum;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace OnlineShop.Entities
 {
     public class OrderEntity
     {
-        public int OrderId { get; set; }
-        public int StoreId { get; set; }
-        public StoreEntity Store { get; set; }
+        [Key]
+        public long OrderId { get; set; }
+        public long StoreId { get; set; }
+        public virtual StoreEntity Store { get; set; }
 
         public string Street { get; set; }
         public string City { get; set; }

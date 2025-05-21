@@ -13,6 +13,16 @@ namespace OnlineShop.Database
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<OrderEntity>()
+          .HasRequired(o => o.Store)
+          .WithMany(s => s.Orders)
+          .HasForeignKey(o => o.StoreId);
+
+            modelBuilder.Entity<OrderLineEntity>()
+                .HasRequired(ol => ol.Order)
+                .WithMany(o => o.OrderLines)
+                .HasForeignKey(ol => ol.OrderId);
         }
     }
 }

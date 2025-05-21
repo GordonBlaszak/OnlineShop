@@ -1,10 +1,12 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace OnlineShop.Entities
 {
     public class StoreEntity
     {
-        public int StoreId { get; set; }
+        [Key]
+        public long StoreId { get; set; }
         public string Name { get; set; }
         public ICollection<OrderEntity> Orders { get; set; }
     }

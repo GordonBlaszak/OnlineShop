@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dto\FilteredOrderResultDto.cs" />
     <Compile Include="Dto\ReportDto.cs" />
     <Compile Include="Enum\PaymentMethod.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
