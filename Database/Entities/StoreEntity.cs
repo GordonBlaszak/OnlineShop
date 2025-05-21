@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace OnlineShop.Entities
+namespace Database.Entities
 {
     public class StoreEntity
     {

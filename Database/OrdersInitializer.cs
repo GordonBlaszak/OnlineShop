@@ -1,9 +1,9 @@
-﻿using OnlineShop.Entities;
+﻿using Database.Entities;
 using OnlineShopModels.Enum;
 using System.Collections.Generic;
 using System.Data.Entity;
 
-namespace OnlineShop.Database
+namespace Database
 {
     public class OrdersInitializer : DropCreateDatabaseAlways<OrdersContext>
     {

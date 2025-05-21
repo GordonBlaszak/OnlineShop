@@ -1,18 +1,19 @@
 ﻿namespace OnlineShop.Migrations
 {
+    using Database;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<OnlineShop.Database.OrdersContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<OrdersContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(OnlineShop.Database.OrdersContext context)
+        protected override void Seed(OrdersContext context)
         {
             //  This method will be called after migrating to the latest version.
 

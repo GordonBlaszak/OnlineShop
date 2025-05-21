@@ -1,10 +1,11 @@
-﻿using OnlineShop.Entities;
+﻿using Database.Entities;
 using System.Data.Entity;
 
-namespace OnlineShop.Database
+namespace Database
 {
     public class OrdersContext : DbContext
     {
+      
         public DbSet<StoreEntity> Stores { get; set; }
         public DbSet<OrderEntity> Orders { get; set; }
         public DbSet<OrderLineEntity> OrderLines { get; set; }
