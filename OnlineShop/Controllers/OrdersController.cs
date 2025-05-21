@@ -14,11 +14,13 @@ namespace OnlineShop.Controllers
             _orderService = new OrderService();
         }
 
+        [HttpGet]
         public ActionResult GetFilteredOrders()
         {
             try
             {
-                return View(_orderService.GetFiltered());
+                return Json(_orderService.GetFiltered(), JsonRequestBehavior.AllowGet);
+
             }
             catch (Exception e)
             {

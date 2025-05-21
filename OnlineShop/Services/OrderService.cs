@@ -5,22 +5,26 @@ using System.Linq;
 
 namespace OnlineShop.Services
 {
-    public class OrderService:IOrderService
+    public class OrderService : IOrderService
     {
 
         public IEnumerable<FilteredOrderResultDto> GetFiltered()
         {
             using (OrdersContext db = new OrdersContext())
             {
-                var sql = @"
-            SELECT o.OrderId, o.City, SUM(ol.NetPrice * ol.Quantity) AS TotalNet
-            FROM Orders o
-            JOIN OrderLines ol ON o.OrderId = ol.OrderId
-            JOIN Stores s ON o.StoreId = s.StoreId
-            WHERE s.StoreId % 2 = 0 AND o.City LIKE '%a%'
-            GROUP BY o.OrderId, o.City";
+                var query = from o in db.Orders
+                            join ol in db.OrderLines on o.OrderId equals ol.OrderId
+                            join s in db.Stores on o.StoreId equals s.StoreId
+                            where s.StoreId % 2 == 0 && o.City.Contains("a")
+                            group new { o, ol } by new { o.OrderId, o.City } into g
+                            select new FilteredOrderResultDto
+                            {
+                                OrderId = g.Key.OrderId,
+                                City = g.Key.City,
+                                TotalNet = g.Sum(x => x.ol.NetPrice * x.ol.Quantity)
+                            };
 
-                return db.Database.SqlQuery<FilteredOrderResultDto>(sql).ToList();
+                return query.ToList();
             }
         }
     }
